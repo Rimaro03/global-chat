@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function MainRoom() {
   const navigate = useNavigate();
   const user = JSON.parse(window.localStorage.getItem("user"))["avatar"];
-  const url = `data:image/svg+xml,${user}`;
-  console.log(url);
+  console.log(user);
 
   useEffect(() => {
     if (!window.localStorage.getItem("user")) {
@@ -18,7 +17,7 @@ export default function MainRoom() {
       <>
         <p>MAIN ROOM</p>
         <br />
-        <img src={url} alt="avatar"></img>
+        <img src={`data:image/svg+xml,${user}`} alt="avatar" />
       </>
     </div>
   );
