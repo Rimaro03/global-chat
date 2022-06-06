@@ -4,16 +4,22 @@ import { useNavigate } from "react-router-dom";
 
 export default function MainRoom() {
   const navigate = useNavigate();
+  const user = JSON.parse(window.localStorage.getItem("user"))["avatar"];
+  const url = `data:image/svg+xml,${user}`;
+  console.log(url);
 
   useEffect(() => {
     if (!window.localStorage.getItem("user")) {
       navigate("/pickusername");
     }
-
-    let user = JSON.parse(window.localStorage.getItem("user"));
-    console.log(user["avatar"]);
-
-    <img src={`data:image/svg+xml;base64,${user["avatar"]}`} alt="avatar" />;
   }, []);
-  return <div>MainRoom</div>;
+  return (
+    <div>
+      <>
+        <p>MAIN ROOM</p>
+        <br />
+        <img src={url} alt="avatar"></img>
+      </>
+    </div>
+  );
 }

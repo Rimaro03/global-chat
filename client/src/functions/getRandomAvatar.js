@@ -6,9 +6,7 @@ dotenv.config();
 export default async function getRandomAvatar(username) {
   return await axios
     .get(
-      `https://api.multiavatar.com/4645646/${Math.round(
-        Math.random() * 1000
-      )}?apikey=${process.env.APIKEY}`
+      `https://api.multiavatar.com/4645646/${Math.round(Math.random() * 1000)}`
     )
     .then((res) => res.data);
 }
