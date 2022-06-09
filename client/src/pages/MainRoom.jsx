@@ -1,15 +1,18 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Avatar from "avataaars"
 
 export default function MainRoom() {
   const navigate = useNavigate();
-  const user = JSON.parse(window.localStorage.getItem("user"))["avatar"];
-  console.log(user);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     if (!window.localStorage.getItem("user")) {
       navigate("/pickusername");
+    }
+    else {
+      setUser(JSON.parse(window.localStorage.getItem("user"))["avatar"]);
     }
   }, []);
   return (
@@ -17,7 +20,7 @@ export default function MainRoom() {
       <>
         <p>MAIN ROOM</p>
         <br />
-        <img src={`data:image/svg+xml,${user}`} alt="avatar" />
+        <Avatar avatarStyle="Circle" />
       </>
     </div>
   );

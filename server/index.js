@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const socket = require("socket.io");
 
-app.use(cors());
 const app = express();
+app.use(cors());
 
 const clients = [];
 
@@ -19,8 +19,8 @@ const io = socket(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("add-user", (data) => {});
-  socket.on("drop-user", (data) => {});
+  socket.on("add-user", (data) => { });
+  socket.on("drop-user", (data) => { });
   socket.on("msg", (data) => {
     io.broadcast("msg", data);
   });

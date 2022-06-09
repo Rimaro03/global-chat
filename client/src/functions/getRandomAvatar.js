@@ -1,12 +1,6 @@
-import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
+import React from "react"
+import { Avatar } from "avataaars"
 
 export default async function getRandomAvatar(username) {
-  return await axios
-    .get(
-      `https://api.multiavatar.com/4645646/${Math.round(Math.random() * 1000)}`
-    )
-    .then((res) => res.data);
+  return <Avatar avatarStyle="Circle" />
 }
